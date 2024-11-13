@@ -7,7 +7,6 @@ using UnityEngine.Tilemaps;
 public class Player_Controller : MonoBehaviour
 {
     public Tilemap tilemap; // Référence à la Tilemap
-    public Vector3 worldPosition; // Position dans le monde
     public Vector2Int PlayerPosition;
     public TileBase[] tileFloor;
     private void Start()
@@ -22,17 +21,22 @@ public class Player_Controller : MonoBehaviour
     //Update All Movement Script
     void PlayerMovement()
     {
-        
+        //defini un vector2 avec le vector2 position du joueur + le vector2 des input( (0,0) par defaut) 
         Vector2Int DesiredPosition = PlayerPosition + InputDirection();
 
+        // si le joueur veut changé de position
         if (DesiredPosition != PlayerPosition)
         {
+            //on recupere le type de tuile correspondant a la case
             TileBase tile = GetTile(DesiredPosition);
-            Debug.Log(tile);
+
+            //si la tuile existe
             if ( tile != null) 
             {
+                //check si un element correspondant a la tuile trouve existe dans la list de tuile de sol
                 if (Array.Exists(tileFloor, element => element.Equals(tile)))
                 {
+                    //bouge le joueur et defini son vector2 position a sa position
                     transform.position = new Vector3(DesiredPosition.x, DesiredPosition.y);
                     PlayerPosition = new Vector2Int((int)transform.position.x, (int)transform.position.y);
                 }
@@ -46,32 +50,6 @@ public class Player_Controller : MonoBehaviour
         
         Vector3Int cellPosition = tilemap.WorldToCell(new Vector3(DesiredPosition.x,DesiredPosition.y,0));
         return tilemap.GetTile(cellPosition);
-    }
-
-    //a suppr (gpt)
-    void GetCellType()
-    {
-        // Convertir la position du monde en position de cellule de la Tilemap
-        Vector3Int cellPosition = tilemap.WorldToCell(worldPosition);
-
-        // Récupérer la Tile à la position donnée
-        TileBase tile = tilemap.GetTile(cellPosition);
-
-        // Vérifier si la tile existe et obtenir le sprite
-        if (tile != null)
-        {
-            // Si la tile est une Tile simple (par exemple, Tile2D), on peut accéder à son sprite
-            Tile tileAsTile = tile as Tile;
-            if (tileAsTile != null)
-            {
-                Sprite tileSprite = tileAsTile.sprite;
-                Debug.Log("Sprite trouvé : " + tileSprite.name);
-            }
-        }
-        else
-        {
-            Debug.Log("Pas de tile à cette position.");
-        }
     }
 
     Vector2Int InputDirection()
