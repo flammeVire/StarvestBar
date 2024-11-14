@@ -9,6 +9,10 @@ public class Player_Controller : MonoBehaviour
     public Tilemap tilemap; // Référence à la Tilemap
     public Vector2Int PlayerPosition;
     public TileBase[] tileFloor;
+    public TileBase[] tileInterract;
+
+    [SerializeField] GameObject FrontTilesDetector;
+
     private void Start()
     {
         PlayerPosition = new Vector2Int((int)transform.position.x,(int)transform.position.y);
@@ -16,8 +20,9 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        PlayerInterract();
     }
-
+    #region Movement
     //Update All Movement Script
     void PlayerMovement()
     {
@@ -44,7 +49,6 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-
     TileBase GetTile(Vector2Int DesiredPosition)
     {
         
@@ -65,20 +69,46 @@ public class Player_Controller : MonoBehaviour
             else
             {
                 x = -1;
+
             }
+            transform.forward = new Vector3(0, 0,x);
+            FrontTilesDetector.transform.position = new Vector3(transform.position.x + x, transform.position.y, 0);
+
         }
         else if (Input.GetButtonDown("Vertical"))
         {
             if (Input.GetAxis("Vertical") > 0)
             {
                 y = 1;
+
             }
             else
             {
                 y = -1;
             }
+            FrontTilesDetector.transform.position = new Vector3(transform.position.x, transform.position.y + y, 0);
+
         }
 
         return new Vector2Int(x, y);
     }
+    #endregion
+    #region Interract
+
+    void PlayerInterract()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("interract");
+            TileBase tile = GetTile(new Vector2Int((int)FrontTilesDetector.transform.position.x,(int)FrontTilesDetector.transform.position.y));
+            if(Array.Exists(tileInterract, element => element.Equals(tile)))
+            {
+                if(tile == tileInterract[0])
+                {
+                    Debug.Log("c'est un champs");
+                }
+            }
+        }
+    }
+    #endregion
 }
