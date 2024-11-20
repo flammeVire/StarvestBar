@@ -353,7 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barre: {fileID: 762531630}
   curPoint: 0
-  minigameSpeed: 1
+  minigameSpeed: 5
 --- !u!1 &297416222
 GameObject:
   m_ObjectHideFlags: 0
