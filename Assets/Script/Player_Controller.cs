@@ -105,10 +105,12 @@ public class Player_Controller : MonoBehaviour
             {
                 if(tile == tileInterract[0])
                 {
-                    Debug.Log("c'est un champs");
+                    
                 }
             }
         }
     }
     #endregion
+
+    
 }
