@@ -10,9 +10,9 @@ public class Player_Controller : MonoBehaviour
     public Vector2Int PlayerPosition;
     public TileBase[] tileFloor;
     public TileBase[] tileInterract;
-
+    [SerializeField] GameManager gameManager;
     [SerializeField] GameObject FrontTilesDetector;
-
+    public Seed ActualSeed;
     private void Start()
     {
         PlayerPosition = new Vector2Int((int)transform.position.x,(int)transform.position.y);
@@ -101,11 +101,25 @@ public class Player_Controller : MonoBehaviour
         {
             Debug.Log("interract");
             TileBase tile = GetTile(new Vector2Int((int)FrontTilesDetector.transform.position.x,(int)FrontTilesDetector.transform.position.y));
-            if(Array.Exists(tileInterract, element => element.Equals(tile)))
+            Vector2Int FTDpos = new Vector2Int((int)FrontTilesDetector.transform.position.x, (int)FrontTilesDetector.transform.position.y);
+            if (Array.Exists(tileInterract, element => element.Equals(tile)))
             {
                 if(tile == tileInterract[0])
                 {
-                    
+                    Debug.Log("Actual Seed ==" + ActualSeed);
+                    gameManager.plantation.Seeding(FTDpos, ActualSeed);
+                }
+                else if(tile == tileInterract[1])
+                {
+                    gameManager.plantation.Watering(FTDpos);
+                }
+                else if(tile == tileInterract[2])
+                {
+                    Debug.Log("REMPLIT LE arrousiouri");
+                }
+                else if(tile == tileInterract[3])
+                {
+                    gameManager.plantation.Beching(FTDpos);
                 }
             }
         }

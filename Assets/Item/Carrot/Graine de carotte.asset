@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: Graine de carotte
   price: 5
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 1734970992987f341977b8871aceed62, type: 3}
   growthTime: 3
+  ActualGrowthTime: 0
