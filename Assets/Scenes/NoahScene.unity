@@ -201,12 +201,12 @@ MonoBehaviour:
   PlayerPosition: {x: 0, y: 0}
   tileFloor:
   - {fileID: 11400000, guid: 31e88d72fbb096746a1356515caf98e6, type: 2}
-  - {fileID: 11400000, guid: af43253ff2137304186578433f1cab33, type: 2}
+  - {fileID: 11400000, guid: c707552f33652214c87674a532fc220c, type: 2}
   - {fileID: 11400000, guid: d844ad3aa70e06e49b8bfc83ca4020e8, type: 2}
-  - {fileID: 11400000, guid: 54c0bd898bf45d84e8be26ef4cfc3bb7, type: 2}
+  - {fileID: 11400000, guid: b7ce1a99c1cfded47b1c94c5c0a3ff76, type: 2}
   tileInterract:
   - {fileID: 11400000, guid: d844ad3aa70e06e49b8bfc83ca4020e8, type: 2}
-  - {fileID: 11400000, guid: af43253ff2137304186578433f1cab33, type: 2}
+  - {fileID: 11400000, guid: c707552f33652214c87674a532fc220c, type: 2}
   - {fileID: 11400000, guid: 8e5c8bfdabb57af4b81a07a923ce2c68, type: 2}
   - {fileID: 11400000, guid: 31e88d72fbb096746a1356515caf98e6, type: 2}
   gameManager: {fileID: 856173923}
@@ -2378,7 +2378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilemap: {fileID: 329103673}
-  Seededfield: {fileID: 11400000, guid: af43253ff2137304186578433f1cab33, type: 2}
+  Seededfield: {fileID: 11400000, guid: c707552f33652214c87674a532fc220c, type: 2}
   WateredField: {fileID: 11400000, guid: 54c0bd898bf45d84e8be26ef4cfc3bb7, type: 2}
   Dirt: {fileID: 11400000, guid: d844ad3aa70e06e49b8bfc83ca4020e8, type: 2}
   gameManager: {fileID: 856173923}
@@ -2396,7 +2396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 275980475}
   plantation: {fileID: 856173922}
-  Quartan: 0
+  DayTime: 4
+  CurrentDayCycle: 0
 --- !u!1 &1768146183
 GameObject:
   m_ObjectHideFlags: 0
