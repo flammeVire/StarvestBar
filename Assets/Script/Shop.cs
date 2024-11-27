@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Shop : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI nametext;
     string currentname = "";
@@ -14,7 +14,6 @@ public class NewBehaviourScript : MonoBehaviour
             currentname = name.Substring(0, i);
             nametext.text = currentname;
             yield return null;
-
         }
     }
 }
