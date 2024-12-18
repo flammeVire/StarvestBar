@@ -25,12 +25,14 @@ public class SeedazonManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(AfficherText());
+       
     }
     public void SeConnecter()
     {
         panel1.SetActive(false);
         panel2.SetActive(true);
+        StartCoroutine(AfficherText(id,textid));
+        StartCoroutine(AfficherText(mdp,textmdp));
     }
     public void Suivant()
     {
@@ -86,13 +88,16 @@ public class SeedazonManager : MonoBehaviour
         Debug.Log("Fermer le jeu");
     }
 
-     IEnumerator AfficherText()
+     IEnumerator AfficherText(string nom,TMP_Text text)
     {
-        yield return new WaitUntil(() => panel2.activeInHierarchy);
-        yield return new WaitForSeconds(1f);
-        textmdp.text = mdp;
-        textid.text = id;
-        yield return null;
+        string currentname = "";
+
+        for (int i = 0; i <= nom.Length; i++)
+        {
+            currentname = nom.Substring(0, i);
+            text.text = currentname;
+            yield return new WaitForSeconds(0.1f);
+        }
     }
     public void Ustensile()
     {
