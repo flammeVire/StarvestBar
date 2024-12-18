@@ -13,6 +13,11 @@ public class SeedazonManager : MonoBehaviour
     public GameObject panelgraine;
     public GameObject panelachat;
     public GameObject suivant;
+    public GameObject Graine1;
+    public GameObject Graine2;
+    public GameObject Graine3;
+    public GameObject Graine4;
+    public GameObject Arrosoire;
     public TMP_Text textmdp;
     public TMP_Text textid;
     public string mdp = "********";
@@ -55,13 +60,18 @@ public class SeedazonManager : MonoBehaviour
         if (panelgraine.activeInHierarchy)
         {
             panelgraine.SetActive(false);
-            paneloption.SetActive(true);
+            panel3.SetActive(true);
         }
         
         if (panelachat.activeInHierarchy)
         {
             panelachat.SetActive(false);
-            panelgraine.SetActive(true);
+            panel3.SetActive(true);
+            Graine1.SetActive(false);
+            Graine2.SetActive(false);
+            Graine3.SetActive(false);
+            Graine4.SetActive(false);
+            Arrosoire.SetActive(false);
         }
     }
 
@@ -73,6 +83,7 @@ public class SeedazonManager : MonoBehaviour
     public void Quitter()
     {
         Application.Quit();
+        Debug.Log("Fermer le jeu");
     }
 
      IEnumerator AfficherText()
@@ -82,5 +93,49 @@ public class SeedazonManager : MonoBehaviour
         textmdp.text = mdp;
         textid.text = id;
         yield return null;
+    }
+    public void Ustensile()
+    {
+        panel3.SetActive(false);
+        panelachat.SetActive(true);
+        Arrosoire.SetActive(true);
+    }
+    public void Option()
+    {
+        panel3.SetActive(false);
+        paneloption.SetActive(true);
+    }
+    public void Graine()
+    {
+        panel3.SetActive(false);
+        panelgraine.SetActive(true);
+    }
+    public void Graine01()
+    {
+        panelgraine.SetActive(false);
+        panelachat.SetActive(true);
+        Graine1.SetActive(true);
+    }
+    public void Graine02()
+    {
+        panelgraine.SetActive(false);
+        panelachat.SetActive(true);
+        Graine2.SetActive(true);
+    }
+    public void Graine03()
+    {
+        panelgraine.SetActive(false);
+        panelachat.SetActive(true);
+        Graine3.SetActive(true);
+    }
+    public void Graine04()
+    {
+        panelgraine.SetActive(false);
+        panelachat.SetActive(true);
+        Graine4.SetActive(true);
+    }
+    public void Acheter()
+    {
+        Debug.Log("Objet acheté");
     }
 }
