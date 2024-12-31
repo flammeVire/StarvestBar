@@ -6,13 +6,19 @@ using UnityEngine.Tilemaps;
 
 public class Player_Controller : MonoBehaviour
 {
-    public Tilemap tilemap; // Référence à la Tilemap
+    public Tilemap tilemap;
     public Vector2Int PlayerPosition;
     public TileBase[] tileFloor;
     public TileBase[] tileInterract;
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject FrontTilesDetector;
     public Seed ActualSeed;
+
+    [Header("Inventory")]
+    public List<Vegetable> vegetablesInventory;
+    public List<Seed> SeedInventory;
+
+
     private void Start()
     {
         PlayerPosition = new Vector2Int((int)transform.position.x,(int)transform.position.y);
@@ -100,31 +106,62 @@ public class Player_Controller : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Debug.Log("interract");
-            TileBase tile = GetTile(new Vector2Int((int)FrontTilesDetector.transform.position.x,(int)FrontTilesDetector.transform.position.y));
+            TileBase tile = GetTile(new Vector2Int((int)FrontTilesDetector.transform.position.x, (int)FrontTilesDetector.transform.position.y));
             Vector2Int FTDpos = new Vector2Int((int)FrontTilesDetector.transform.position.x, (int)FrontTilesDetector.transform.position.y);
+
             if (Array.Exists(tileInterract, element => element.Equals(tile)))
             {
-                if(tile == tileInterract[0])
+                //cas terre
+                if (tile == tileInterract[0])
                 {
                     Debug.Log("Actual Seed ==" + ActualSeed);
                     gameManager.plantation.Seeding(FTDpos, ActualSeed);
                 }
-                else if(tile == tileInterract[1])
+                //cas pousse
+                else if (tile == tileInterract[1] || tile == tileInterract[2] || tile == tileInterract[3] || tile == tileInterract[4])
                 {
                     gameManager.plantation.Watering(FTDpos);
                 }
-                else if(tile == tileInterract[2])
-                {
-                    Debug.Log("REMPLIT LE arrousiouri");
-                }
-                else if(tile == tileInterract[3])
+                //cas terre dur
+                else if (tile == tileInterract[5])
                 {
                     gameManager.plantation.Beching(FTDpos);
                 }
+                //cas Ordinateur
+                else if (tile == tileInterract[6])
+                {
+                    //gameManager.plantation.Beching(FTDpos);
+                }
+                //cas mixeur
+                else if (tile == tileInterract[7])
+                {
+                    //gameManager.plantation.Beching(FTDpos);
+                }
+                //cas legume
+                else if (tile == tileInterract[8] || tile == tileInterract[9] || tile == tileInterract[10] || tile == tileInterract[11])
+                {
+                    vegetablesInventory.Add(gameManager.plantation.PickUpVegetable(FTDpos));
+                    
+                }
+
+                {
+                    //gameManager.plantation.Beching(FTDpos);
+                }
+                
+                /*
+                //cas eau
+                else if(tile == tileInterract[6])
+                {
+                    Debug.Log("REMPLIT LE arrousiouri");
+                }*/
             }
         }
     }
     #endregion
+    #region inventory
 
-    
+    //mettre quand changement de truc d'inventaire
+
+    #endregion
+
 }
