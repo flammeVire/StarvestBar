@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c31f6ae98539734a806d6162d0adf30, type: 3}
-  m_Name: Pasteque
+  m_Name: Chou
   m_EditorClassIdentifier: 
   nom: Chou
   price: 40

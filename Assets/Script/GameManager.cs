@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Plantation_Controller plantation;
     [SerializeField] float DayTime;
     public DayCycle CurrentDayCycle;
-
+    [SerializeField] public Seed[] PossibleSeed;
     public enum DayCycle
     {
         matin,
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
         plantation.growSeed();
-        Debug.Log("Daytime == " + CurrentDayCycle);
+        //Debug.Log("Daytime == " + CurrentDayCycle);
         StartCoroutine(ChangeDayCycle());
     }
 

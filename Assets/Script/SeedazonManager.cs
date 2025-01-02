@@ -13,20 +13,14 @@ public class SeedazonManager : MonoBehaviour
     public GameObject panelgraine;
     public GameObject panelachat;
     public GameObject suivant;
-    public GameObject Graine1;
-    public GameObject Graine2;
-    public GameObject Graine3;
-    public GameObject Graine4;
     public GameObject Arrosoire;
     public TMP_Text textmdp;
     public TMP_Text textid;
     public string mdp = "********";
     public string id = "KykOuDu47";
 
-    private void Start()
-    {
-       
-    }
+
+    public Player_Controller player;
     public void SeConnecter()
     {
         panel1.SetActive(false);
@@ -69,10 +63,6 @@ public class SeedazonManager : MonoBehaviour
         {
             panelachat.SetActive(false);
             panel3.SetActive(true);
-            Graine1.SetActive(false);
-            Graine2.SetActive(false);
-            Graine3.SetActive(false);
-            Graine4.SetActive(false);
             Arrosoire.SetActive(false);
         }
     }
@@ -115,32 +105,13 @@ public class SeedazonManager : MonoBehaviour
         panel3.SetActive(false);
         panelgraine.SetActive(true);
     }
-    public void Graine01()
+    public void Acheter(Seed graineAcheter)
     {
-        panelgraine.SetActive(false);
-        panelachat.SetActive(true);
-        Graine1.SetActive(true);
-    }
-    public void Graine02()
-    {
-        panelgraine.SetActive(false);
-        panelachat.SetActive(true);
-        Graine2.SetActive(true);
-    }
-    public void Graine03()
-    {
-        panelgraine.SetActive(false);
-        panelachat.SetActive(true);
-        Graine3.SetActive(true);
-    }
-    public void Graine04()
-    {
-        panelgraine.SetActive(false);
-        panelachat.SetActive(true);
-        Graine4.SetActive(true);
-    }
-    public void Acheter()
-    {
-        Debug.Log("Objet acheté");
+        Debug.Log("Objet acheté " + graineAcheter);
+        if (player.Money >= graineAcheter.Price)
+        {
+            player.Money -= graineAcheter.Price;
+            player.SeedInventory.Add(graineAcheter);
+        }
     }
 }

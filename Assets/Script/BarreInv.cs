@@ -6,15 +6,16 @@ using UnityEngine.UI;
 public class BarreInv : MonoBehaviour
 {
     public List<GameObject> caseBarre;
-    private int index = 0;
+    public int index { get; private set; } = 0;
     public bool bloquer = false;
-    // Start is called before the first frame update
+    public Player_Controller playerController;
+    public GameManager gameManager;
+
     void Start()
     {
         caseBarre[index].GetComponent<Image>().color = Color.gray;
     }
 
-    // Update is called once per frame
     void Update()
     {
        #region barre
@@ -119,31 +120,34 @@ public class BarreInv : MonoBehaviour
         {
             if(index  == 0)
             {
-                Debug.Log("Arrosoir");
+                Debug.Log("Main");
             }
             else if (index == 1)
             {
-                Debug.Log("Rateau");
+                Debug.Log("Arrosoire");
             }
             else if (index == 2)
             {
-                Debug.Log("Main");
+                Debug.Log("Beche");
             }
             else if (index == 3)
             {
-                Debug.Log("Graine1");
+                playerController.ActualSeed = gameManager.PossibleSeed[0];
             }
             else if (index == 4)
             {
-                Debug.Log("Graine2");
+                playerController.ActualSeed = gameManager.PossibleSeed[1];
+
             }
             else if (index == 5)
             {
-                Debug.Log("Graine3");
+                playerController.ActualSeed = gameManager.PossibleSeed[2];
+
             }
             else if (index == 6)
             {
-                Debug.Log("Graine4");
+                playerController.ActualSeed = gameManager.PossibleSeed[3];
+
             }
         }
     }

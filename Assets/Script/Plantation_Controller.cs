@@ -50,7 +50,7 @@ public class Plantation_Controller : MonoBehaviour
         tilemap.SetTile(cellPos, Dirt);
     }
 
-    public Vegetable PickUpVegetable(Vector2Int seedpos)
+    public Vegetable PickUpVegetable(Vector2Int seedpos) 
     {
         Vector3Int seedpos3 = new Vector3Int(seedpos.x, seedpos.y, 0);
         Debug.Log("seedpos3 ==" + seedpos3);

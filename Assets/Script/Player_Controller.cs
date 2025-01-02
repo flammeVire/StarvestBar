@@ -13,11 +13,13 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject FrontTilesDetector;
     public Seed ActualSeed;
+    [SerializeField] BarreInv inventoryScript;
+    [SerializeField] GameObject ShopObj;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
     public List<Seed> SeedInventory;
-
+    public int Money;
 
     private void Start()
     {
@@ -112,56 +114,78 @@ public class Player_Controller : MonoBehaviour
             if (Array.Exists(tileInterract, element => element.Equals(tile)))
             {
                 //cas terre
-                if (tile == tileInterract[0])
+                if (tile == tileInterract[0] && inventoryScript.index >= 3)
                 {
                     Debug.Log("Actual Seed ==" + ActualSeed);
-                    gameManager.plantation.Seeding(FTDpos, ActualSeed);
+                    if (haveSeedInInventory(ActualSeed))
+                    {
+                        gameManager.plantation.Seeding(FTDpos, ActualSeed);
+                    }
                 }
                 //cas pousse
                 else if (tile == tileInterract[1] || tile == tileInterract[2] || tile == tileInterract[3] || tile == tileInterract[4])
                 {
-                    gameManager.plantation.Watering(FTDpos);
+                    if (inventoryScript.index == 1)
+                    {
+                        gameManager.plantation.Watering(FTDpos);
+                    }
                 }
                 //cas terre dur
-                else if (tile == tileInterract[5])
+                else if (tile == tileInterract[5] && inventoryScript.index == 3)
                 {
                     gameManager.plantation.Beching(FTDpos);
                 }
+
                 //cas Ordinateur
-                else if (tile == tileInterract[6])
+                else if (tile == tileInterract[6] && inventoryScript.index == 0)
                 {
-                    //gameManager.plantation.Beching(FTDpos);
+                    OpenComputer();
                 }
                 //cas mixeur
-                else if (tile == tileInterract[7])
+                else if (tile == tileInterract[7] && inventoryScript.index == 0)
                 {
-                    //gameManager.plantation.Beching(FTDpos);
+                    MakeSmoothie();
                 }
                 //cas legume
-                else if (tile == tileInterract[8] || tile == tileInterract[9] || tile == tileInterract[10] || tile == tileInterract[11])
+                else if (tile == tileInterract[8] || tile == tileInterract[9] || tile == tileInterract[10] || tile == tileInterract[11] && inventoryScript.index == 0)
                 {
                     vegetablesInventory.Add(gameManager.plantation.PickUpVegetable(FTDpos));
-                    
+
                 }
 
-                {
-                    //gameManager.plantation.Beching(FTDpos);
-                }
-                
                 /*
                 //cas eau
-                else if(tile == tileInterract[6])
+                else if(tile == tileInterract[x])
                 {
                     Debug.Log("REMPLIT LE arrousiouri");
                 }*/
             }
         }
     }
-    #endregion
-    #region inventory
 
-    //mettre quand changement de truc d'inventaire
+        //mettre code de mat
+    void MakeSmoothie()
+    {
+    }
+
+    void OpenComputer()
+    {
+        ShopObj.SetActive(true);
+    }
 
     #endregion
+    
+    bool haveSeedInInventory(Seed seedselect)
+    {
+        for (int i = 0; i < SeedInventory.Count; i++)
+        {
+            if (SeedInventory[i] == seedselect)
+            {
+                SeedInventory.RemoveAt(i);
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
