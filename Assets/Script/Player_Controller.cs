@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -17,6 +18,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameObject ShopObj;
     [SerializeField] GameObject MiniGameObj;
     public bool InMixeur = false;
+    private int ChoixLegume;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -173,6 +175,7 @@ public class Player_Controller : MonoBehaviour
     void MakeSmoothie()
     {
         InMixeur = true;
+        ChoixLegume = Random.Range(0, 4);
         MiniGameObj.SetActive(true);
     }
 
