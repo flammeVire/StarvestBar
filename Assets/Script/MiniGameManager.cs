@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MiniGameManager : MonoBehaviour
 {
     public Image barre;
+    public GameObject MiniGameObj;
     private float maxPoint = 100;
     public float curPoint = 0;
     private float score;
@@ -22,20 +23,26 @@ public class MiniGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && stop == true)
+        if (GameManager.Instance.player.InMixeur == true)
         {
-            up = true;
-            stop = false;
+            if (Input.GetButtonDown("Jump") && stop == true)
+            {
+                up = true;
+                stop = false;
+            }
+            else if (Input.GetButtonDown("Jump") && up == true || Input.GetButtonDown("Jump") && down == true)
+            {
+                stop = true;
+                up = false;
+                down = false;
+                score = curPoint;
+                Debug.Log(score);
+                curPoint = 0;
+                MiniGameObj.SetActive(false);
+                GameManager.Instance.player.InMixeur = false;
+            }
         }
-        else if (Input.GetButtonDown("Jump") && up == true || Input.GetButtonDown("Jump") && down == true)
-        {
-            stop = true;
-            up = false;
-            down = false;
-            score = curPoint;
-            Debug.Log(score);
-            curPoint = 0;
-        }
+
     }
 
     private void FixedUpdate()

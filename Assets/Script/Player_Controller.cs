@@ -15,6 +15,8 @@ public class Player_Controller : MonoBehaviour
     public Seed ActualSeed;
     [SerializeField] BarreInv inventoryScript;
     [SerializeField] GameObject ShopObj;
+    [SerializeField] GameObject MiniGameObj;
+    public bool InMixeur = false;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -144,7 +146,11 @@ public class Player_Controller : MonoBehaviour
                 //cas mixeur
                 else if (tile == tileInterract[7] && inventoryScript.index == 0)
                 {
-                    MakeSmoothie();
+                    if(InMixeur == false)
+                    {
+                        MakeSmoothie();
+                    }
+
                 }
                 //cas legume
                 else if (tile == tileInterract[8] || tile == tileInterract[9] || tile == tileInterract[10] || tile == tileInterract[11] && inventoryScript.index == 0)
@@ -166,6 +172,8 @@ public class Player_Controller : MonoBehaviour
         //mettre code de mat
     void MakeSmoothie()
     {
+        InMixeur = true;
+        MiniGameObj.SetActive(true);
     }
 
     void OpenComputer()
