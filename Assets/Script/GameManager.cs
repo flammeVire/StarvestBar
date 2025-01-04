@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float DayTime;
     public DayCycle CurrentDayCycle;
     [SerializeField] public Seed[] PossibleSeed;
+    [SerializeField] public Vegetable[] PossibleVegetable;
     public static GameManager Instance;
 
     private void Awake()

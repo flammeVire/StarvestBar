@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.WSA;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameObject ShopObj;
     [SerializeField] GameObject MiniGameObj;
     public bool InMixeur = false;
-    private int ChoixLegume;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -174,9 +174,30 @@ public class Player_Controller : MonoBehaviour
         //mettre code de mat
     void MakeSmoothie()
     {
-        InMixeur = true;
-        ChoixLegume = Random.Range(0, 4);
-        MiniGameObj.SetActive(true);
+        if (vegetablesInventory.Count > 0)
+        {
+            
+            //récupérer un légume aléatoire
+            int ChoixLegume = UnityEngine.Random.Range(0, 4);
+            Vegetable LegumeChoisi = GameManager.Instance.PossibleVegetable[ChoixLegume];
+            Debug.Log(LegumeChoisi);
+            foreach ( var vegetable in vegetablesInventory)
+            {
+                if (LegumeChoisi == vegetable)
+                {
+                    InMixeur = true;
+                    MiniGameObj.SetActive(true);
+                    vegetablesInventory.Remove(vegetable);
+                    Debug.Log("Lance le jeu fank");
+                    return;
+                }
+            }
+            
+        }
+
+        //si oui lance mini jeu
+        //si non on vérifi un autre légume
+
     }
 
     void OpenComputer()
