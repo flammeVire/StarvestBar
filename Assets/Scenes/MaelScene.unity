@@ -290,9 +290,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2263537921623478388, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
+      propertyPath: m_Name
+      value: Arrosoir
+      objectReference: {fileID: 0}
+    - target: {fileID: 2263537921623478388, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3044274122519574926, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
       propertyPath: m_Name
       value: Shop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465307822161946571, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6534031824316243096, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8185266667245703711, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
       propertyPath: m_Camera
