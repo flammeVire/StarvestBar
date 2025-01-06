@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce6ed85441971649afc72dc0d58bc66, type: 3}
+  m_Name: Graine Tomate
+  m_EditorClassIdentifier: 
+  nom: 
+  price: 23
+  sprite: {fileID: 21300000, guid: 91113f734fecc21468211f746b91d73e, type: 3}
+  tile: {fileID: 11400000, guid: 3f90b7a3d0332754c9c40e876e51bb53, type: 2}
+  growthTime: 6
+  mutationInPercent: 10
+  ActualGrowthTime: 0
+  Vegetable: {fileID: 11400000, guid: 417bc31f73ee80d4e92d1e1122036c3b, type: 2}
+  WateredTiles: {fileID: 11400000, guid: 561ec96b4f328fa4889b2de2a88b0cbb, type: 2}

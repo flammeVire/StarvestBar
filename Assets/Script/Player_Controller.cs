@@ -135,7 +135,7 @@ public class Player_Controller : MonoBehaviour
                     }
                 }
                 //cas terre dur
-                else if (tile == tileInterract[5] && inventoryScript.index == 3)
+                else if (tile == tileInterract[5] && inventoryScript.index == 2)
                 {
                     gameManager.plantation.Beching(FTDpos);
                 }
@@ -155,7 +155,7 @@ public class Player_Controller : MonoBehaviour
 
                 }
                 //cas legume
-                else if (tile == tileInterract[8] || tile == tileInterract[9] || tile == tileInterract[10] || tile == tileInterract[11] && inventoryScript.index == 0)
+                else if (tile == tileInterract[8] || tile == tileInterract[9] || tile == tileInterract[10] || tile == tileInterract[11] || tile == tileInterract[12] || tile == tileInterract[13] || tile == tileInterract[14] || tile == tileInterract[15] || tile == tileInterract[16] || tile == tileInterract[17] && inventoryScript.index == 0)
                 {
                     vegetablesInventory.Add(gameManager.plantation.PickUpVegetable(FTDpos));
 
