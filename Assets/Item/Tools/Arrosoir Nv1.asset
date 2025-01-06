@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: Arrosoir Nv1
   price: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 38e1ee166e8967c4697651b527e6cede, type: 3}
+  tile: {fileID: 0}
   level: 1
   capacity: 0
   maxCapacity: 5
