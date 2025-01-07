@@ -128,4 +128,8 @@ public class SeedazonManager : MonoBehaviour
             player.SeedInventory.Add(graineAcheter);
         }
     }
+    public void AmeliorationArrosoir()
+    {
+        player.arrosoirCapacity += 5;
+    }
 }

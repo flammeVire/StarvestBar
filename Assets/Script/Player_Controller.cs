@@ -20,15 +20,21 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameObject MiniGameObj;
     public bool InMixeur = false;
     public Vegetable LegumeChoisi;
+    [SerializeField] private UIManagement uiManagement;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
     public List<Seed> SeedInventory;
     public int Money;
-
+    
+    [Header("Arrosoir")]
+    public int arrosoirCapacity = 5;
+    public int currentWater;
     private void Start()
     {
         PlayerPosition = new Vector2Int((int)transform.position.x,(int)transform.position.y);
+        currentWater = arrosoirCapacity;
+        uiManagement.UpdateMoneyDisplay(Money);
     }
     void Update()
     {
@@ -129,9 +135,10 @@ public class Player_Controller : MonoBehaviour
                 //cas pousse
                 else if (tile == tileInterract[1] || tile == tileInterract[2] || tile == tileInterract[3] || tile == tileInterract[4])
                 {
-                    if (inventoryScript.index == 1)
+                    if (inventoryScript.index == 1 && currentWater > 0)
                     {
                         gameManager.plantation.Watering(FTDpos);
+                        currentWater --;
                     }
                 }
                 //cas terre dur
@@ -161,13 +168,11 @@ public class Player_Controller : MonoBehaviour
                     vegetablesInventory.Add(gameManager.plantation.PickUpVegetable(FTDpos));
 
                 }
-
-                /*
-                //cas eau
-                else if(tile == tileInterract[x])
+                // cas eau
+                else if (inventoryScript.index == 1 && tile == tileInterract[18])
                 {
-                    Debug.Log("REMPLIT LE arrousiouri");
-                }*/
+                    currentWater = arrosoirCapacity;
+                }
             }
         }
     }
@@ -223,5 +228,4 @@ public class Player_Controller : MonoBehaviour
         }
         return false;
     }
-
 }
