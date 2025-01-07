@@ -9,8 +9,6 @@ public class Save_Data : MonoBehaviour
     [SerializeField] Plantation_Controller plantation;
     [SerializeField] Player_Controller player;
     public Game_Data Data = new Game_Data();
-    List<Seed_Data> seedsOnMap = new List<Seed_Data>();
-    List<Vegetable_Data> vegetablesOnMap = new List<Vegetable_Data>();
 
     #region save
     void SaveToJson()
@@ -28,21 +26,55 @@ public class Save_Data : MonoBehaviour
         Data.PlayerPosition = player.PlayerPosition;
         Data.arroisoir_Capacity = 0; //changer avec le code de mael
         Data.arroisoirIsUpgraded = false; // changer avec code de mael
-        Data.Current_Seeds = new List<Seed_Data>();
-        Data.Current_Vegetable = new List<Vegetable_Data>();
+        
+
         foreach (var plantes in plantation.SeedPosition)
         {
+            Debug.Log(plantes);
             Seed_Data seed_Data = AddingSeedCloneData(plantes.Value, plantes.Key);
-            Data.Current_Seeds.Add(seed_Data);
+            Debug.Log(seed_Data);
+            Data.Seeds_OnMap.Add(seed_Data);
+            Debug.Log(Data.Seeds_OnMap.Count);           
         }
         foreach(var plantes in plantation.VegetablePosition)
         {
-            Vegetable_Data vegetable_Data = AddingVegetableCloneData(plantes.Value,plantes.Key);
-            Data.Current_Vegetable.Add(vegetable_Data);
+           Vegetable_Data vegetable_Data = AddingVegetableCloneData(plantes.Value,plantes.Key);
+           Data.Vegetable_OnMap.Add(vegetable_Data);
         }
         Data.DayCycle = gameManager.CurrentDayCycle;
         SaveToJson();
     }
+
+    #region other Data
+    Seed_Data AddingSeedCloneData(Seed seed, Vector2Int pos)
+    {
+        Seed_Data sdt = new Seed_Data();
+        sdt.Grow = seed.ActualGrowthTime;
+        sdt.Nom = seed.Nom;
+        sdt.position = pos;
+        if (player.tilemap.GetTile((Vector3Int)pos) == seed.Tile)
+        {
+            sdt.IsWatered = false;
+        }
+        else
+        {
+            sdt.IsWatered = true;
+        }
+        sdt.HaveMutated = seed.HaveMuted;
+        sdt.vegetableCorrespondant = seed.Vegetable;
+        return sdt;
+    }
+
+    Vegetable_Data AddingVegetableCloneData(Vegetable vegetable,Vector2Int pos)
+    {
+        Vegetable_Data vdt = new Vegetable_Data();
+        vdt.position = pos;
+        vdt.Nom = vegetable.Nom;
+        return vdt;
+    }
+    #endregion
+
+
     #endregion
     #region load
     void LoadFromJson()
@@ -56,57 +88,63 @@ public class Save_Data : MonoBehaviour
     {
         LoadFromJson();
 
-        seedsOnMap = Data.Current_Seeds;
-        vegetablesOnMap = Data.Current_Vegetable;
-
         player.Money = Data.money;
         player.SeedInventory = Data.Player_seeds;
         player.vegetablesInventory = Data.Player_Vegetables;
         player.PlayerPosition = Data.PlayerPosition;
 
-        //arroisoir capacity
-        //upgrade arroisoir
-        plantation.SeedPosition = ReturnDictSeedFromJson();
-        plantation.VegetablePosition = ReturnDictVegetableFromJson() ;
+        plantation.SeedPosition = ReturnDictSeedFromJson(Data);
+        plantation.VegetablePosition = ReturnDictVegetableFromJson(Data) ;
 
         gameManager.CurrentDayCycle = Data.DayCycle;
 
+        changeTileMap();
     }
-    #endregion
 
-    #region seedManagement
-    Seed_Data AddingSeedCloneData(Seed seed, Vector2Int pos)
+    void changeTileMap()
     {
-        Seed_Data sdt = new Seed_Data();
-        sdt.Grow = seed.ActualGrowthTime;
-        sdt.Nom = seed.Nom;
-        sdt.position = pos;
-        if (player.tilemap.GetTile((Vector3Int)pos) == seed.Tile)
+        foreach (var plantes in plantation.SeedPosition)
         {
-            sdt.IsWatered = false;
+            Vector3Int pos = new Vector3Int(plantes.Key.x - 1, plantes.Key.y - 1, 0);
+            foreach (var valeur in Data.Seeds_OnMap)
+            {
+                if (valeur.position == plantes.Key)
+                {
+                    if (valeur.IsWatered)
+                    {
+                        player.tilemap.SetTile(pos, plantes.Value.WateredTiles);
+
+                    }
+                    else
+                    {
+                        player.tilemap.SetTile(pos, plantes.Value.Tile);
+
+                    }
+                }
+            }
+
         }
-        else
+        foreach(var plantes in plantation.VegetablePosition)
         {
-            sdt.IsWatered = true ;
+            Vector3Int pos = new Vector3Int(plantes.Key.x - 1, plantes.Key.y - 1, 0);
+            player.tilemap.SetTile(pos, plantes.Value.Tile);
         }
-        sdt.HaveMutated = seed.HaveMuted;
-        sdt.vegetableCorrespondant = seed.Vegetable;
-        return sdt;
     }
-    Dictionary<Vector2Int, Seed> ReturnDictSeedFromJson()
+    #region Other Data
+    Dictionary<Vector2Int, Seed> ReturnDictSeedFromJson(Game_Data data)
     {
         Dictionary<Vector2Int, Seed> dico = new Dictionary<Vector2Int, Seed>();
 
         //crée un clone de la graine
         //quel est la graine
 
-        foreach (var valeur in seedsOnMap) 
+        foreach (var valeur in data.Seeds_OnMap)
         {
             Debug.Log(valeur);
             Seed clone = null;
             foreach (Seed plante in gameManager.PossibleSeed)
             {
-                if (plante.Nom == valeur.Nom) 
+                if (plante.Nom == valeur.Nom)
                 {
                     clone = Instantiate(plante);
                 }
@@ -116,36 +154,16 @@ public class Save_Data : MonoBehaviour
                 clone.HaveMuted = valeur.HaveMutated;
                 clone.ActualGrowthTime = valeur.Grow;
                 clone.Vegetable = valeur.vegetableCorrespondant;
-
-                if (valeur.IsWatered) 
-                {
-                    Debug.Log("Watered tiles set");
-                    player.tilemap.SetTile(new Vector3Int(valeur.position.x, valeur.position.y, 0), clone.WateredTiles);
-                }
-                else
-                {
-                    Debug.Log("classic tiles set");
-                    player.tilemap.SetTile(new Vector3Int(valeur.position.x, valeur.position.y, 0), clone.Tile);
-                }
             }
             dico.Add(valeur.position, clone);
         }
         return dico;
     }
 
-
-
-    Vegetable_Data AddingVegetableCloneData(Vegetable vegetable,Vector2Int pos)
-    {
-        Vegetable_Data vdt = new Vegetable_Data();
-        vdt.position = pos;
-        vdt.Nom = vegetable.Nom;
-        return vdt;
-    }
-    Dictionary<Vector2Int,Vegetable> ReturnDictVegetableFromJson()
+    Dictionary<Vector2Int,Vegetable> ReturnDictVegetableFromJson(Game_Data data)
     {
         Dictionary<Vector2Int, Vegetable> dico = new Dictionary<Vector2Int, Vegetable>();
-        foreach(var valeur in vegetablesOnMap)
+        foreach(var valeur in data.Vegetable_OnMap)
         {
             Vegetable clone = null;
             foreach(Vegetable vegetable in gameManager.PossibleVegetable)
@@ -155,14 +173,13 @@ public class Save_Data : MonoBehaviour
                     clone= Instantiate(vegetable);
                 }   
             }
+            
             dico.Add(valeur.position,clone);
         }
 
         return dico;
     }
-
-   
-
+    #endregion
     #endregion
 }
 
@@ -176,11 +193,13 @@ public class Game_Data
     public int arroisoir_Capacity;
     public bool arroisoirIsUpgraded;
 
-    public List<Seed_Data> Current_Seeds;
-    public List<Vegetable_Data> Current_Vegetable;
+    public List<Seed_Data> Seeds_OnMap = new List<Seed_Data>();
+    public List<Vegetable_Data> Vegetable_OnMap = new List<Vegetable_Data>();
     public GameManager.DayCycle DayCycle;
 }
 
+
+[System.Serializable]
 public class Seed_Data
 {
     public int Grow;
@@ -191,6 +210,8 @@ public class Seed_Data
     public Vegetable vegetableCorrespondant;
 }
 
+
+[System.Serializable]
 public class Vegetable_Data
 {
     public Vector2Int position;
