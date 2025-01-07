@@ -19,6 +19,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameObject ShopObj;
     [SerializeField] GameObject MiniGameObj;
     public bool InMixeur = false;
+    public Vegetable LegumeChoisi;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -181,7 +182,7 @@ public class Player_Controller : MonoBehaviour
             while (true)
             {
                 int ChoixLegume = UnityEngine.Random.Range(0, 10);
-                Vegetable LegumeChoisi = GameManager.Instance.PossibleVegetable[ChoixLegume];
+                LegumeChoisi = GameManager.Instance.PossibleVegetable[ChoixLegume];
                 Debug.Log(LegumeChoisi);
 
                 foreach (Vegetable vegetable in vegetablesInventory)

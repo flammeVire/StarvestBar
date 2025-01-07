@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -35,6 +36,10 @@ public class MiniGameManager : MonoBehaviour
                 up = false;
                 down = false;
                 score = curPoint;
+                int valeurLegume = GameManager.Instance.player.LegumeChoisi.Price;
+                float prixFinal = (valeurLegume * score) / 100;
+                int myInt = Convert.ToInt32(prixFinal);
+                GameManager.Instance.player.Money += myInt;
                 Debug.Log(score);
                 curPoint = 0;
                 MiniGameObj.SetActive(false);
