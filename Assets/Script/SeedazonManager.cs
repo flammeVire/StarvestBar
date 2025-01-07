@@ -19,8 +19,22 @@ public class SeedazonManager : MonoBehaviour
     public string mdp = "********";
     public string id = "KykOuDu47";
 
-
     public Player_Controller player;
+
+    private void Update()
+    {
+        
+        if (shop.activeSelf)
+        {
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
+        
+    }
+
     public void SeConnecter()
     {
         panel1.SetActive(false);
@@ -86,7 +100,7 @@ public class SeedazonManager : MonoBehaviour
         {
             currentname = nom.Substring(0, i);
             text.text = currentname;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
     }
     public void Ustensile()

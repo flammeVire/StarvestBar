@@ -150,10 +150,10 @@ public class Plantation_Controller : MonoBehaviour
         Debug.Log("Seed in VegetableMutated ==" + seed);
         if (seed.Nom == GameManager.Instance.PossibleSeed[0].Nom)
         {
-            Debug.Log("La graine planté est une carotte");
-            Debug.Log("tilemap.gettile = " + tilemap.GetTile(adjacentPosition));
+            Debug.Log("La graine planté est une carotte" + "tilemap.gettile = " + tilemap.GetTile(adjacentPosition));
             if(tilemap.GetTile(adjacentPosition) == GameManager.Instance.PossibleSeed[1].Tile || tilemap.GetTile(adjacentPosition) == GameManager.Instance.PossibleSeed[1].WateredTiles)
             {
+                Debug.Log("La graine planté est une carotte" + "La tile adjacente est chou");
                 return GameManager.Instance.PossibleVegetable[5];
             }
             else if (tilemap.GetTile(adjacentPosition) == GameManager.Instance.PossibleSeed[2].Tile || tilemap.GetTile(adjacentPosition) == GameManager.Instance.PossibleSeed[2].WateredTiles)

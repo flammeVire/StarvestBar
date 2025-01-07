@@ -35,6 +35,7 @@ public class Player_Controller : MonoBehaviour
         PlayerInterract();
     }
     #region Movement
+
     //Update All Movement Script
     void PlayerMovement()
     {
@@ -63,7 +64,6 @@ public class Player_Controller : MonoBehaviour
 
     TileBase GetTile(Vector2Int DesiredPosition)
     {
-        
         Vector3Int cellPosition = tilemap.WorldToCell(new Vector3(DesiredPosition.x,DesiredPosition.y,0));
         return tilemap.GetTile(cellPosition);
     }
@@ -92,7 +92,6 @@ public class Player_Controller : MonoBehaviour
             if (Input.GetAxis("Vertical") > 0)
             {
                 y = 1;
-
             }
             else
             {
@@ -144,6 +143,7 @@ public class Player_Controller : MonoBehaviour
                 else if (tile == tileInterract[6] && inventoryScript.index == 0)
                 {
                     OpenComputer();
+                    
                 }
                 //cas mixeur
                 else if (tile == tileInterract[7] && inventoryScript.index == 0)
@@ -176,23 +176,26 @@ public class Player_Controller : MonoBehaviour
     {
         if (vegetablesInventory.Count > 0)
         {
-            
+
             //récupérer un légume aléatoire
-            int ChoixLegume = UnityEngine.Random.Range(0, 4);
-            Vegetable LegumeChoisi = GameManager.Instance.PossibleVegetable[ChoixLegume];
-            Debug.Log(LegumeChoisi);
-            foreach ( var vegetable in vegetablesInventory)
+            while (true)
             {
-                if (LegumeChoisi == vegetable)
+                int ChoixLegume = UnityEngine.Random.Range(0, 10);
+                Vegetable LegumeChoisi = GameManager.Instance.PossibleVegetable[ChoixLegume];
+                Debug.Log(LegumeChoisi);
+
+                foreach (Vegetable vegetable in vegetablesInventory)
                 {
-                    InMixeur = true;
-                    MiniGameObj.SetActive(true);
-                    vegetablesInventory.Remove(vegetable);
-                    Debug.Log("Lance le jeu fank");
-                    return;
+                    if (LegumeChoisi.Nom == vegetable.Nom)
+                    {
+                        MiniGameObj.SetActive(true);
+                        InMixeur = true;
+                        vegetablesInventory.Remove(vegetable);
+                        Debug.Log("Lance le jeu fank");
+                        return;
+                    }
                 }
             }
-            
         }
 
         //si oui lance mini jeu

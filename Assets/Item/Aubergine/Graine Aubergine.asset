@@ -21,3 +21,4 @@ MonoBehaviour:
   ActualGrowthTime: 0
   Vegetable: {fileID: 11400000, guid: ade7e574b465c234c9ed0ee4c2c9776c, type: 2}
   WateredTiles: {fileID: 11400000, guid: 229c0d8f4fa1c7047b0e17133cf8a0d1, type: 2}
+  HaveMuted: 0

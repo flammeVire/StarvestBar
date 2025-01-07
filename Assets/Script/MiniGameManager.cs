@@ -14,13 +14,12 @@ public class MiniGameManager : MonoBehaviour
     private bool down = false;
     private bool stop = true;
     public float minigameSpeed = 1f;
-    // Start is called before the first frame update
+
     void Start()
     {
         barre.fillAmount = curPoint / maxPoint;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (GameManager.Instance.player.InMixeur == true)
