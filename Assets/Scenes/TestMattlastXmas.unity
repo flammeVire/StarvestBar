@@ -906,6 +906,7 @@ MonoBehaviour:
   ShopObj: {fileID: 237211189}
   MiniGameObj: {fileID: 271425665}
   InMixeur: 0
+  LegumeChoisi: {fileID: 0}
   vegetablesInventory: []
   SeedInventory: []
   Money: 10000
