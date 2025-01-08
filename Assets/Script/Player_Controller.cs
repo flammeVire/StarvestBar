@@ -21,6 +21,7 @@ public class Player_Controller : MonoBehaviour
     public Vegetable LegumeChoisi;
     [SerializeField] public UIManagement uiManagement;
     [SerializeField] public Pnj_Dialogue_UI pnj;
+    bool lockPlayer = false;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -47,8 +48,19 @@ public class Player_Controller : MonoBehaviour
     //Update All Movement Script
     void PlayerMovement()
     {
+
+        if (Input.GetAxisRaw("StopMove") > 0)
+        {
+            lockPlayer = true;
+        }
+        else
+        {
+            lockPlayer = false;
+        }
+        
         //defini un vector2 avec le vector2 position du joueur + le vector2 des input( (0,0) par defaut) 
-        Vector2Int DesiredPosition = PlayerPosition + InputDirection();
+        Vector2Int DesiredPosition = PlayerPosition + InputDirection(lockPlayer);
+        
 
         // si le joueur veut changé de position
         if (DesiredPosition != PlayerPosition)
@@ -76,10 +88,11 @@ public class Player_Controller : MonoBehaviour
         return tilemap.GetTile(cellPosition);
     }
 
-    Vector2Int InputDirection()
+    Vector2Int InputDirection(bool locked)
     {
         int x = 0;int y = 0;
 
+        
         if (Input.GetButtonDown("Horizontal"))
         {
             if (Input.GetAxis("Horizontal") > 0)
@@ -109,7 +122,14 @@ public class Player_Controller : MonoBehaviour
 
         }
 
+        if (locked)
+        {
+            return new Vector2Int(0, 0);
+        }
+        else 
+        { 
         return new Vector2Int(x, y);
+        }
     }
     #endregion 
     #region Interract
