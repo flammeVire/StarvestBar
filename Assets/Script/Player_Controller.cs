@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class Player_Controller : MonoBehaviour
 {
@@ -21,6 +20,7 @@ public class Player_Controller : MonoBehaviour
     public bool InMixeur = false;
     public Vegetable LegumeChoisi;
     [SerializeField] public UIManagement uiManagement;
+    [SerializeField] public Pnj_Dialogue_UI pnj;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -30,6 +30,7 @@ public class Player_Controller : MonoBehaviour
     [Header("Arrosoir")]
     public int arrosoirCapacity = 5;
     public int currentWater;
+    public bool isUpgraded;
     private void Start()
     {
         PlayerPosition = new Vector2Int((int)transform.position.x,(int)transform.position.y);
@@ -175,9 +176,9 @@ public class Player_Controller : MonoBehaviour
                 //cas mixeur
                 else if (tile == tileInterract[7] && inventoryScript.index == 0)
                 {
-                    if(InMixeur == false)
+                    if(InMixeur == false && vegetablesInventory.Count > 0)
                     {
-                        MakeSmoothie();
+                        pnj.PasseDialogue();
                     }
 
                 }
@@ -198,7 +199,7 @@ public class Player_Controller : MonoBehaviour
     }
 
         //mettre code de mat
-    void MakeSmoothie()
+    public string MakeSmoothie()
     {
         if (vegetablesInventory.Count > 0)
         {
@@ -218,11 +219,12 @@ public class Player_Controller : MonoBehaviour
                         InMixeur = true;
                         vegetablesInventory.Remove(vegetable);
                         Debug.Log("Lance le jeu fank");
-                        return;
+                        return LegumeChoisi.Nom;
                     }
                 }
             }
         }
+        return null;
 
         //si oui lance mini jeu
         //si non on vérifi un autre légume

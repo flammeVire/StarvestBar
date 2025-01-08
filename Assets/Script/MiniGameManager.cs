@@ -45,6 +45,7 @@ public class MiniGameManager : MonoBehaviour
                 MiniGameObj.SetActive(false);
                 GameManager.Instance.player.InMixeur = false;
                 player.uiManagement.UpdateMoneyDisplay(player.Money);
+                StartCoroutine(player.pnj.sell());
             }
         }
 

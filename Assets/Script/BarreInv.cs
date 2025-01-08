@@ -29,7 +29,7 @@ public class BarreInv : MonoBehaviour
         {
             if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
-                if (index < 7)
+                if (index < 6)
                 {
                     index += 1;
                     caseBarre[index].GetComponent<Image>().color = Color.gray;
@@ -39,7 +39,7 @@ public class BarreInv : MonoBehaviour
                 {
                     index = 0;
                     caseBarre[index].GetComponent<Image>().color = Color.gray;
-                    caseBarre[7].GetComponent<Image>().color = Color.white;
+                    caseBarre[6].GetComponent<Image>().color = Color.white;
                 }
                 ObjectSelected();
             }
@@ -53,7 +53,7 @@ public class BarreInv : MonoBehaviour
                 }
                 else
                 {
-                    index = 7;
+                    index = 6;
                     caseBarre[index].GetComponent<Image>().color = Color.gray;
                     caseBarre[0].GetComponent<Image>().color = Color.white;
                 }
@@ -108,13 +108,7 @@ public class BarreInv : MonoBehaviour
                 caseBarre[index].GetComponent<Image>().color = Color.gray;
                 ObjectSelected();
             }
-            else if (Input.GetButtonDown("Case8"))
-            {
-                caseBarre[index].GetComponent<Image>().color = Color.white;
-                index = 7;
-                caseBarre[index].GetComponent<Image>().color = Color.gray;
-                ObjectSelected();
-            }
+          
         }
         void ObjectSelected()
         {

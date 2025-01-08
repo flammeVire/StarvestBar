@@ -1,74 +1,57 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 
 public class Pnj_Dialogue_UI : MonoBehaviour
 {
     public GameObject Panel;
     public GameObject personnage;
-    public GameObject dialogue;
-    public GameObject ButonText;
-    
-    // Liste des PNJ et leurs demandes
-    public List<string> alimentsDemandes = new List<string> { "carotte", "citrouille", "raisin", "choux" };
-    private string alimentActuel; // Ce que le PNJ demande 
+    public TextMeshProUGUI dialogue;
+    public Player_Controller player;
+
+    public Sprite[] sprites;
 
     private void Start()
     {
-        // Initialisation du panel en mode caché
-        Panel.SetActive(false);
-        personnage.SetActive(false);
-        dialogue.SetActive(false);
-        ButonText.SetActive(false);
-
-        // Générer une première demande
-        GenererDemande();
+        hide();
     }
 
-    private void Update()
-    {
-        PasseDialogue();
-    }
-
-    // Gérer l'affichage du dialogue avec la touche "Espace"
+    // Gérer l'affichage du dialogue quand interraction
     public void PasseDialogue()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Dialogue activé");
+        // Active les éléments de l'interface
+        Panel.SetActive(true);
+        personnage.SetActive(true);
+        personnage.GetComponent<SpriteRenderer>().sprite = SelectRandomClient();
+        dialogue.gameObject.SetActive(true);
 
-            // Active les éléments de l'interface
-            Panel.SetActive(true);
-            personnage.SetActive(true);
-            dialogue.SetActive(true);
-            ButonText.SetActive(true);
-
-            // Met à jour le texte du dialogue
-            dialogue.GetComponent<UnityEngine.UI.Text>().text = "Bonjour ! J'aimerais avoir un smoothie " + alimentActuel + ".";
-        }
+        // Met à jour le texte du dialogue
+        Debug.Log(player.MakeSmoothie());
+        dialogue.text = "Bonjour ! J'aimerais avoir le smoothie: \n" + player.MakeSmoothie();
+        
     }
 
-    // Gère le clic sur le bouton de dialogue
-    public void boutonCliquer()
+    Sprite SelectRandomClient()
     {
-        Debug.Log("Dialogue suivant");
+        int index = Random.Range(0, sprites.Length);
+        return sprites[index];
 
-        // réponse du joueur
-        dialogue.GetComponent<UnityEngine.UI.Text>().text = "Bonne dégustation à vous !";
-
-        // Cache le bouton pour éviter de cliquer plusieurs fois
-        ButonText.SetActive(false);
-
-        // Nouvelle demande
-        GenererDemande();
     }
 
-    // Générer une demande aléatoire pour le PNJ
-    private void GenererDemande()
+    public IEnumerator sell()
     {
-        int index = Random.Range(0, alimentsDemandes.Count);
-        alimentActuel = alimentsDemandes[index];
-        Debug.Log("Nouvelle demande générée : " + alimentActuel);
+        // Initialisation du panel en mode caché
+        dialogue.text = " Voici votre smoothie";
+        yield return new WaitForSecondsRealtime(1f);
+        hide();
+        
+    }
+
+    public void hide()
+    {
+        Panel.SetActive(false);
+        personnage.SetActive(false);
+        dialogue.gameObject.SetActive(false);
     }
 }

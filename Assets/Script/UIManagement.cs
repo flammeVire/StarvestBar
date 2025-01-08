@@ -14,6 +14,8 @@ public class UIManagement : MonoBehaviour
     public TextMeshProUGUI seeds4Text;
     public TextMeshProUGUI ArrosoirText;
 
+    public GameObject dayWheel;
+    public Sprite[] days;
     private void Awake()
     {
         UpdateCapacityArrosoir(5 , 5);
@@ -36,6 +38,26 @@ public class UIManagement : MonoBehaviour
     public void UpdateCapacityArrosoir(int actualcapacity, int maximalcapacity)
     {
         ArrosoirText.text = actualcapacity.ToString() + " / " + maximalcapacity.ToString();
+    }
+
+
+    public void DaytimeUI(GameManager.DayCycle dayCycle)
+    {
+        switch (dayCycle)
+        {
+            case GameManager.DayCycle.matin:
+                dayWheel.gameObject.GetComponent<SpriteRenderer>().sprite = days[0];
+                break;
+             case GameManager.DayCycle.midi:
+                dayWheel.gameObject.GetComponent<SpriteRenderer>().sprite = days[1];
+                break;
+            case GameManager.DayCycle.soir:
+                dayWheel.gameObject.GetComponent<SpriteRenderer>().sprite = days[2];
+                break;
+            case GameManager.DayCycle.nuit:
+                dayWheel.gameObject.GetComponent<SpriteRenderer>().sprite = days[3];
+                break;
+        }
     }
 
 }

@@ -40,6 +40,9 @@ public class Plantation_Controller : MonoBehaviour
             }
         }
 
+
+
+
     }
 
     public void Beching(Vector2Int seedpos)

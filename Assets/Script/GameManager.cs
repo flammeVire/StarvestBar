@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Seed[] PossibleSeed;
     [SerializeField] public Vegetable[] PossibleVegetable;
     public static GameManager Instance;
-
+    public UIManagement ui;
     private void Awake()
     {
         if (Instance != null) Destroy(Instance);
@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
                 CurrentDayCycle = DayCycle.matin;
                 break;
         }
+        ui.DaytimeUI(CurrentDayCycle);
         plantation.growSeed();
         //Debug.Log("Daytime == " + CurrentDayCycle);
         StartCoroutine(ChangeDayCycle());
