@@ -1,0 +1,677 @@
+fileFormatVersion: 2
+guid: 324c4e2e285def14fa6a646dcb400746
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tile_map_farming_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697c8d8826bb9164ea647fdcfba98f8d
+      internalID: 147608901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4166
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a95c849e7e5b5c045b84dc8ad0e4d258
+      internalID: -1814018375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8331
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9cdef72855f71e4d8d433b8654df32f
+      internalID: 25732163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 12497
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a7a10102fb6cc4eb89d568a7a3b7b9
+      internalID: -997915328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16667
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64aa54070814156469273033640af42c
+      internalID: -832064538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_5
+      rect:
+        serializedVersion: 2
+        x: 4170
+        y: 16667
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc3368fec54a40943b8dcf5619f8fb4c
+      internalID: 115465355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_6
+      rect:
+        serializedVersion: 2
+        x: 8333
+        y: 16667
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3a46e257829d684986daeca5576e053
+      internalID: 709903260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_7
+      rect:
+        serializedVersion: 2
+        x: 12505
+        y: 16667
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e74789bdc255b794ca8e6bf0de6525b7
+      internalID: 1834268795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_8
+      rect:
+        serializedVersion: 2
+        x: 16667
+        y: 16667
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64443c9d9090acb4d84294b94842fd44
+      internalID: 1227506010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_9
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 12503
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ca27b7aa410a944884a46492bdf868
+      internalID: 453167538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_10
+      rect:
+        serializedVersion: 2
+        x: 8336
+        y: 12499
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51de8a196cba68048b76d0db087ce8ac
+      internalID: 1980816439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_11
+      rect:
+        serializedVersion: 2
+        x: 12503
+        y: 12505
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6981b82a512fdac42bfbefa774471fe4
+      internalID: 1762783454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_12
+      rect:
+        serializedVersion: 2
+        x: 16667
+        y: 12506
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9ed3949a56d3d44affa93bbb81087d
+      internalID: -947040680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_13
+      rect:
+        serializedVersion: 2
+        x: 4170
+        y: 8336
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3d07795829b4f4d8503b5c1e717905
+      internalID: -764281505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_14
+      rect:
+        serializedVersion: 2
+        x: 8349
+        y: 8331
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146c6f1e46617bf449c22537f0a66f68
+      internalID: 1968892930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_15
+      rect:
+        serializedVersion: 2
+        x: 12501
+        y: 8350
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4bc014f09ba3cb4d8ef99d430b48554
+      internalID: 656719499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_16
+      rect:
+        serializedVersion: 2
+        x: 16667
+        y: 8331
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b9de06a811e0d4aa7194ba29f70094
+      internalID: 1885065533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_17
+      rect:
+        serializedVersion: 2
+        x: 4171
+        y: 4171
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0be34576bca9b10438bcb585e52ca4b1
+      internalID: -9277294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_18
+      rect:
+        serializedVersion: 2
+        x: 8340
+        y: 4171
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 751174167c5aec14f8f0f4eb1d7db23e
+      internalID: 1421875526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_19
+      rect:
+        serializedVersion: 2
+        x: 12510
+        y: 4171
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79e36ed11e25e014fbc280e1c9384cdd
+      internalID: -734971707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_20
+      rect:
+        serializedVersion: 2
+        x: 16697
+        y: 4162
+        width: 4136
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e03524f1c612cc46b8c8d9546b6f54d
+      internalID: 539723502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_21
+      rect:
+        serializedVersion: 2
+        x: 16667
+        y: 0
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d21140fdf0af934fba3f01398b79a8c
+      internalID: -1467706981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_22
+      rect:
+        serializedVersion: 2
+        x: 12500
+        y: 0
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b8984e02b33d014d8abb66fd74aa46a
+      internalID: -604945826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_23
+      rect:
+        serializedVersion: 2
+        x: 8340
+        y: 0
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b8efdc09447b6429ed181ed67044b1
+      internalID: 578703278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_map_farming_24
+      rect:
+        serializedVersion: 2
+        x: 4168
+        y: 0
+        width: 4166
+        height: 4166
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc123856acef0a342b332d334a243ff4
+      internalID: 1564124824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      tile_map_farming_0: 147608901
+      tile_map_farming_1: -1814018375
+      tile_map_farming_10: 1980816439
+      tile_map_farming_11: 1762783454
+      tile_map_farming_12: -947040680
+      tile_map_farming_13: -764281505
+      tile_map_farming_14: 1968892930
+      tile_map_farming_15: 656719499
+      tile_map_farming_16: 1885065533
+      tile_map_farming_17: -9277294
+      tile_map_farming_18: 1421875526
+      tile_map_farming_19: -734971707
+      tile_map_farming_2: 25732163
+      tile_map_farming_20: 539723502
+      tile_map_farming_21: -1467706981
+      tile_map_farming_22: -604945826
+      tile_map_farming_23: 578703278
+      tile_map_farming_24: 1564124824
+      tile_map_farming_3: -997915328
+      tile_map_farming_4: -832064538
+      tile_map_farming_5: 115465355
+      tile_map_farming_6: 709903260
+      tile_map_farming_7: 1834268795
+      tile_map_farming_8: 1227506010
+      tile_map_farming_9: 453167538
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

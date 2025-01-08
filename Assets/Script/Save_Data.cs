@@ -24,7 +24,7 @@ public class Save_Data : MonoBehaviour
         Data.Player_seeds = player.SeedInventory;
         Data.Player_Vegetables = player.vegetablesInventory;
         Data.PlayerPosition = player.PlayerPosition;
-        Data.arroisoir_Capacity = 0; //changer avec le code de mael
+        Data.arroisoir_Capacity = player.arrosoirCapacity;
         Data.arroisoirIsUpgraded = false; // changer avec code de mael
         
 
@@ -92,6 +92,7 @@ public class Save_Data : MonoBehaviour
         player.SeedInventory = Data.Player_seeds;
         player.vegetablesInventory = Data.Player_Vegetables;
         player.PlayerPosition = Data.PlayerPosition;
+        player.arrosoirCapacity = Data.arroisoir_Capacity;
 
         plantation.SeedPosition = ReturnDictSeedFromJson(Data);
         plantation.VegetablePosition = ReturnDictVegetableFromJson(Data) ;
