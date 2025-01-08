@@ -98,7 +98,7 @@ public class Save_Data : MonoBehaviour
         plantation.VegetablePosition = ReturnDictVegetableFromJson(Data) ;
 
         gameManager.CurrentDayCycle = Data.DayCycle;
-
+        player.uiManagement.UpdateMoneyDisplay(player.Money);
         changeTileMap();
     }
 
