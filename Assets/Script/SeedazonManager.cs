@@ -151,6 +151,8 @@ public class SeedazonManager : MonoBehaviour
     public void AmeliorationArrosoir()
     {
         player.arrosoirCapacity += 5;
+        player.Money -= 500;
         player.uiManagement.UpdateMoneyDisplay(player.Money);
+        player.uiManagement.UpdateCapacityArrosoir(player.currentWater,player.arrosoirCapacity);
     }
 }
