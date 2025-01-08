@@ -46,10 +46,9 @@ public class Plantation_Controller : MonoBehaviour
         {
             Vector3Int[] seedpos3 = new Vector3Int[9] { new Vector3Int(seedpos.x - 1, seedpos.y + 1, 0), new Vector3Int(seedpos.x, seedpos.y + 1, 0), new Vector3Int(seedpos.x + 1, seedpos.y + 1, 0),
                                                         new Vector3Int(seedpos.x-1, seedpos.y, 0),new Vector3Int(seedpos.x, seedpos.y, 0),new Vector3Int(seedpos.x+1, seedpos.y, 0),
-               
-                new Vector3Int(seedpos.x-1, seedpos.y-1, 0),new Vector3Int(seedpos.x, seedpos.y-1, 0),new Vector3Int(seedpos.x, seedpos.y, 0)};
-            
-                //revoir car seedpos3 != seedpos
+                                                        new Vector3Int(seedpos.x-1, seedpos.y-1, 0),new Vector3Int(seedpos.x, seedpos.y-1, 0),new Vector3Int(seedpos.x+1, seedpos.y-1, 0)};
+
+            //revoir car seedpos3 != seedpos
             /*
                int already = 0;
             foreach(var seedDico in SeedPosition)
@@ -73,8 +72,21 @@ public class Plantation_Controller : MonoBehaviour
                 
             }
             */
+            for (int i = 0; i < seedpos3.Length; i++)
+            {
+                Vector3Int cellPos = tilemap.WorldToCell(seedpos3[i]);
 
+                foreach (var seedDico in SeedPosition)
+                {
+                    if (seedDico.Key == (Vector2Int)seedpos3[i])
+                    {
+                        tilemap.SetTile(cellPos, seedDico.Value.WateredTiles);
+                        break;
+                    }
+                }
+            }
         }
+        
         
     }
     
