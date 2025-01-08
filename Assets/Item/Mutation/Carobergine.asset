@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Carobergine
   m_EditorClassIdentifier: 
   nom: Carobergine
-  price: 120
+  price: 170
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 9964641ad75daa44b88da6d364355f0e, type: 2}

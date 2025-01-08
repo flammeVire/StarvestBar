@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Carotte
   m_EditorClassIdentifier: 
   nom: Carotte
-  price: 3
+  price: 10
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: ce7455af211b59e4587b8da02a036a4d, type: 2}

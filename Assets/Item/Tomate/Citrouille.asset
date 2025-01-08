@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c31f6ae98539734a806d6162d0adf30, type: 3}
-  m_Name: Tomate
+  m_Name: Citrouille
   m_EditorClassIdentifier: 
-  nom: Tomate
-  price: 30
+  nom: Citrouille
+  price: 40
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 2a2f30cfdce6b96428f0e3171ca1f9b2, type: 2}

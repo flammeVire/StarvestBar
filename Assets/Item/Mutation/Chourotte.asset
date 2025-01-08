@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Chourotte
   m_EditorClassIdentifier: 
   nom: Chourotte
-  price: 3000
+  price: 170
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: d9b21ee6e394f4a479ee3c67bf49092c, type: 2}

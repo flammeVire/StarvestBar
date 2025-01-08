@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Carmate
   m_EditorClassIdentifier: 
   nom: Carmate
-  price: 0
+  price: 150
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 43e98339dede78340a97e02b9352cfa6, type: 2}

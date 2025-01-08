@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Choumatte
   m_EditorClassIdentifier: 
   nom: Choumatte
-  price: 0
+  price: 300
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 36d253ba70fd2b24a99989d8305be213, type: 2}

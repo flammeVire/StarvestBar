@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: chaubergine
   m_EditorClassIdentifier: 
   nom: Chaubergine
-  price: 0
+  price: 200
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: c0250359c1586e9419795d28ef6d40c1, type: 2}

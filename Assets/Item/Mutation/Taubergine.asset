@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Taubergine
   m_EditorClassIdentifier: 
   nom: Taubergine
-  price: 0
+  price: 250
   sprite: {fileID: 0}
   tile: {fileID: 11400000, guid: 1df0e657a284dff47b341212c753b51c, type: 2}
