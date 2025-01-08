@@ -119,6 +119,7 @@ public class SeedazonManager : MonoBehaviour
         panel3.SetActive(false);
         panelgraine.SetActive(true);
     }
+
     public void Acheter(Seed graineAcheter)
     {
         Debug.Log("Objet acheté " + graineAcheter);
@@ -126,10 +127,30 @@ public class SeedazonManager : MonoBehaviour
         {
             player.Money -= graineAcheter.Price;
             player.SeedInventory.Add(graineAcheter);
+            player.uiManagement.UpdateMoneyDisplay(player.Money);
+
+            if(graineAcheter == GameManager.Instance.PossibleSeed[0])
+            {
+                player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds1Text, player.uiManagement.numberOfSeeds1 += 1);
+            }
+            else if(graineAcheter == GameManager.Instance.PossibleSeed[1])
+            {
+                player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds2Text, player.uiManagement.numberOfSeeds2 += 1);
+            }
+            else if(graineAcheter == GameManager.Instance.PossibleSeed[2])
+            {
+                player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds3Text, player.uiManagement.numberOfSeeds3 += 1);
+
+            }
+            else if(graineAcheter == GameManager.Instance.PossibleSeed[3])
+            {
+                player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds4Text, player.uiManagement.numberOfSeeds4 += 1);
+            }
         }
     }
     public void AmeliorationArrosoir()
     {
         player.arrosoirCapacity += 5;
+        player.uiManagement.UpdateMoneyDisplay(player.Money);
     }
 }

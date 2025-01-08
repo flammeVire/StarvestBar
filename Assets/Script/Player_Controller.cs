@@ -20,7 +20,7 @@ public class Player_Controller : MonoBehaviour
     [SerializeField] GameObject MiniGameObj;
     public bool InMixeur = false;
     public Vegetable LegumeChoisi;
-    [SerializeField] private UIManagement uiManagement;
+    [SerializeField] public UIManagement uiManagement;
 
     [Header("Inventory")]
     public List<Vegetable> vegetablesInventory;
@@ -110,7 +110,7 @@ public class Player_Controller : MonoBehaviour
 
         return new Vector2Int(x, y);
     }
-    #endregion
+    #endregion 
     #region Interract
 
     void PlayerInterract()
@@ -130,6 +130,23 @@ public class Player_Controller : MonoBehaviour
                     if (haveSeedInInventory(ActualSeed))
                     {
                         gameManager.plantation.Seeding(FTDpos, ActualSeed);
+
+                        if (ActualSeed == GameManager.Instance.PossibleSeed[0])
+                        {
+                            uiManagement.UpdateSeedInventory(uiManagement.seeds1Text, uiManagement.numberOfSeeds1 -= 1);
+                        }
+                        else if (ActualSeed == GameManager.Instance.PossibleSeed[1])
+                        {
+                            uiManagement.UpdateSeedInventory(uiManagement.seeds2Text,uiManagement.numberOfSeeds2 -= 1);
+                        }
+                        else if (ActualSeed == GameManager.Instance.PossibleSeed[2])
+                        {
+                            uiManagement.UpdateSeedInventory(uiManagement.seeds3Text,uiManagement.numberOfSeeds3 -= 1);
+                        }
+                        else if (ActualSeed == GameManager.Instance.PossibleSeed[3])
+                        {
+                            uiManagement.UpdateSeedInventory(uiManagement.seeds4Text,uiManagement.numberOfSeeds4 -= 1);
+                        }
                     }
                 }
                 //cas pousse
@@ -139,6 +156,8 @@ public class Player_Controller : MonoBehaviour
                     {
                         gameManager.plantation.Watering(FTDpos);
                         currentWater --;
+                        uiManagement.UpdateCapacityArrosoir(currentWater,arrosoirCapacity);
+
                     }
                 }
                 //cas terre dur
@@ -172,6 +191,7 @@ public class Player_Controller : MonoBehaviour
                 else if (inventoryScript.index == 1 && tile == tileInterract[18])
                 {
                     currentWater = arrosoirCapacity;
+                    uiManagement.UpdateCapacityArrosoir(currentWater, arrosoirCapacity);
                 }
             }
         }

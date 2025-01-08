@@ -15,7 +15,7 @@ public class MiniGameManager : MonoBehaviour
     private bool down = false;
     private bool stop = true;
     public float minigameSpeed = 1f;
-
+    public Player_Controller player;
     void Start()
     {
         barre.fillAmount = curPoint / maxPoint;
@@ -44,6 +44,7 @@ public class MiniGameManager : MonoBehaviour
                 curPoint = 0;
                 MiniGameObj.SetActive(false);
                 GameManager.Instance.player.InMixeur = false;
+                player.uiManagement.UpdateMoneyDisplay(player.Money);
             }
         }
 
