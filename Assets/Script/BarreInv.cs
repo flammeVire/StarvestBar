@@ -10,6 +10,11 @@ public class BarreInv : MonoBehaviour
     public bool bloquer = false;
     public Player_Controller playerController;
     public GameManager gameManager;
+    public Sprite persoMain;
+    public Sprite persoArrosoir1;
+    public Sprite persoArrosoir2;
+    public Sprite persoGraine;
+    public Sprite persoFaux;
 
     void Start()
     {
@@ -114,35 +119,42 @@ public class BarreInv : MonoBehaviour
         {
             if(index  == 0)
             {
-                Debug.Log("Main");
+                ChangerSprite(persoMain);
             }
             else if (index == 1)
             {
-                Debug.Log("Arrosoire");
+                ChangerSprite(persoArrosoir1);
             }
             else if (index == 2)
             {
-                Debug.Log("Beche");
+                ChangerSprite(persoFaux);
             }
             else if (index == 3)
             {
                 playerController.ActualSeed = gameManager.PossibleSeed[0];
+                ChangerSprite(persoGraine);
             }
             else if (index == 4)
             {
                 playerController.ActualSeed = gameManager.PossibleSeed[1];
+                ChangerSprite(persoGraine);
 
             }
             else if (index == 5)
             {
                 playerController.ActualSeed = gameManager.PossibleSeed[2];
+                ChangerSprite(persoGraine);
 
             }
             else if (index == 6)
             {
                 playerController.ActualSeed = gameManager.PossibleSeed[3];
-
+                ChangerSprite(persoGraine);
             }
         }
+    }
+    void ChangerSprite(Sprite sprite) 
+    {
+    playerController.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 }
