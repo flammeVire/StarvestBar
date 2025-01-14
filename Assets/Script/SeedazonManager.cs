@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SeedazonManager : MonoBehaviour
 {
@@ -21,9 +22,44 @@ public class SeedazonManager : MonoBehaviour
 
     public Player_Controller player;
 
+    public Button acheterButton1;
+    public Button venduButton1;
+    public Button acheterButton2;
+    public Button venduButton2;
+
+    private int ameliorationAchatCount = 0;
+    private const int maxAmeliorationAchat = 2;
+    public TMP_Text shopMoneyText;
+    public TMP_Text arrosoireMoneyText;
+
+    public int grainesAchetees1 = 0;
+    public int grainesAchetees2 = 0;
+    public int grainesAchetees3 = 0;
+    public int grainesAchetees4 = 0;
+
+    public TMP_Text grainesAcheteesText1;
+    public TMP_Text grainesAcheteesText2;
+    public TMP_Text grainesAcheteesText3;
+    public TMP_Text grainesAcheteesText4;
+    public UIManagement UIManager;
+
+    private void Start()
+    {
+        acheterButton1.gameObject.SetActive(true);
+        venduButton1.gameObject.SetActive(false);
+        acheterButton2.gameObject.SetActive(true);
+        venduButton2.gameObject.SetActive(false);
+
+        grainesAcheteesText1.gameObject.SetActive(false);
+        grainesAcheteesText2.gameObject.SetActive(false);
+        grainesAcheteesText3.gameObject.SetActive(false);
+        grainesAcheteesText4.gameObject.SetActive(false);
+
+        UpdateShopMoneyDisplay();
+    }
+
     private void Update()
     {
-        
         if (shop.activeSelf)
         {
             Time.timeScale = 1f;
@@ -32,21 +68,28 @@ public class SeedazonManager : MonoBehaviour
         {
             Time.timeScale = 0f;
         }
-        
+    }
+
+    public void AcheterObjet2()
+    {
+        acheterButton2.gameObject.SetActive(false);
+        venduButton2.gameObject.SetActive(true);
     }
 
     public void SeConnecter()
     {
         panel1.SetActive(false);
         panel2.SetActive(true);
-        StartCoroutine(AfficherText(id,textid));
-        StartCoroutine(AfficherText(mdp,textmdp));
+        StartCoroutine(AfficherText(id, textid));
+        StartCoroutine(AfficherText(mdp, textmdp));
     }
+
     public void Suivant()
     {
         panel2.SetActive(false);
         panel3.SetActive(true);
     }
+
     public void Retour()
     {
         if (panel2.activeInHierarchy)
@@ -54,7 +97,7 @@ public class SeedazonManager : MonoBehaviour
             panel2.SetActive(false);
             panel1.SetActive(true);
         }
-        
+
         if (panel3.activeInHierarchy)
         {
             panel3.SetActive(false);
@@ -72,7 +115,7 @@ public class SeedazonManager : MonoBehaviour
             panelgraine.SetActive(false);
             panel3.SetActive(true);
         }
-        
+
         if (panelachat.activeInHierarchy)
         {
             panelachat.SetActive(false);
@@ -92,7 +135,7 @@ public class SeedazonManager : MonoBehaviour
         Debug.Log("Fermer le jeu");
     }
 
-     IEnumerator AfficherText(string nom,TMP_Text text)
+    IEnumerator AfficherText(string nom, TMP_Text text)
     {
         string currentname = "";
 
@@ -103,17 +146,22 @@ public class SeedazonManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.1f);
         }
     }
+
     public void Ustensile()
     {
         panel3.SetActive(false);
         panelachat.SetActive(true);
         Arrosoire.SetActive(true);
+        player.uiManagement.UpdateMoneyDisplay(player.Money);
+        Debug.Log(player.Money);
     }
+
     public void Option()
     {
         panel3.SetActive(false);
         paneloption.SetActive(true);
     }
+
     public void Graine()
     {
         panel3.SetActive(false);
@@ -125,34 +173,137 @@ public class SeedazonManager : MonoBehaviour
         Debug.Log("Objet acheté " + graineAcheter);
         if (player.Money >= graineAcheter.Price)
         {
-            player.Money -= graineAcheter.Price;
+            player.Money -= graineAcheter.Price; 
             player.SeedInventory.Add(graineAcheter);
             player.uiManagement.UpdateMoneyDisplay(player.Money);
 
-            if(graineAcheter == GameManager.Instance.PossibleSeed[0])
+            shopMoneyText.text = "Argent : " + player.Money + " pièces";
+
+            if (Arrosoire.activeSelf)
             {
+                arrosoireMoneyText.text = "Argent : " + player.Money + " pièces";
+            }
+
+            if (graineAcheter == GameManager.Instance.PossibleSeed[0])
+            {
+                grainesAchetees1++;
+                grainesAcheteesText1.gameObject.SetActive(true);
+                UpdateGrainesAcheteesText(1);
                 player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds1Text, player.uiManagement.numberOfSeeds1 += 1);
             }
-            else if(graineAcheter == GameManager.Instance.PossibleSeed[1])
+            else if (graineAcheter == GameManager.Instance.PossibleSeed[1])
             {
+                grainesAchetees2++;
+                grainesAcheteesText2.gameObject.SetActive(true);
+                UpdateGrainesAcheteesText(2);
                 player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds2Text, player.uiManagement.numberOfSeeds2 += 1);
             }
-            else if(graineAcheter == GameManager.Instance.PossibleSeed[2])
+            else if (graineAcheter == GameManager.Instance.PossibleSeed[2])
             {
+                grainesAchetees3++;
+                grainesAcheteesText3.gameObject.SetActive(true);
+                UpdateGrainesAcheteesText(3);
                 player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds3Text, player.uiManagement.numberOfSeeds3 += 1);
-
             }
-            else if(graineAcheter == GameManager.Instance.PossibleSeed[3])
+            else if (graineAcheter == GameManager.Instance.PossibleSeed[3])
             {
+                grainesAchetees4++;
+                grainesAcheteesText4.gameObject.SetActive(true);
+                UpdateGrainesAcheteesText(4);
                 player.uiManagement.UpdateSeedInventory(player.uiManagement.seeds4Text, player.uiManagement.numberOfSeeds4 += 1);
             }
         }
+        else
+        {
+            Debug.Log("Pas assez d'argent pour acheter cet objet !");
+        }
     }
+
+
     public void AmeliorationArrosoir()
     {
-        player.arrosoirCapacity += 5;
-        player.Money -= 500;
-        player.uiManagement.UpdateMoneyDisplay(player.Money);
-        player.uiManagement.UpdateCapacityArrosoir(player.currentWater,player.arrosoirCapacity);
+        if (ameliorationAchatCount < maxAmeliorationAchat)
+        {
+            if (player.Money >= 500)
+            {
+                player.Money -= 500;
+                player.arrosoirCapacity += 5;
+
+                player.uiManagement.UpdateMoneyDisplay(player.Money);
+
+                if (Arrosoire.activeSelf)
+                {
+                    arrosoireMoneyText.text = "Argent : " + player.Money + " pièces";
+                }
+
+                ameliorationAchatCount++;
+
+                Debug.Log($"Amélioration de l'arrosoir achetée {ameliorationAchatCount} fois.");
+            }
+            if (ameliorationAchatCount == maxAmeliorationAchat)
+            {
+                acheterButton1.gameObject.SetActive(false);
+                venduButton1.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Pas assez d'argent pour améliorer l'arrosoir !");
+            }
+        }
+    }
+
+
+    private void UpdateShopMoneyDisplay()
+    {
+        shopMoneyText.text = "Argent : " + player.Money + " pièces";
+        
+        if (arrosoireMoneyText != null)
+        {
+            arrosoireMoneyText.text = "Argent : " + player.Money + " pièces";
+        }
+    }
+    private void UpdateGrainesAcheteesText(int graineType)
+    {
+        switch (graineType)
+        {
+            case 1:
+                grainesAcheteesText1.text = "Graine 1 achetée : " + UIManager.numberOfSeeds1.ToString();
+                break;
+            case 2:
+                grainesAcheteesText2.text = "Graine 2 achetée : " + UIManager.numberOfSeeds2.ToString();
+                break;
+            case 3:
+                grainesAcheteesText3.text = "Graine 3 achetée : " + UIManager.numberOfSeeds3.ToString();
+                break;
+            case 4:
+                grainesAcheteesText4.text = "Graine 4 achetée : " + UIManager.numberOfSeeds4.ToString();
+                break;
+        }
+    }
+    public void ResetGrainesText()
+    {
+        grainesAcheteesText1.gameObject.SetActive(false);
+        grainesAcheteesText2.gameObject.SetActive(false);
+        grainesAcheteesText3.gameObject.SetActive(false);
+        grainesAcheteesText4.gameObject.SetActive(false);
+    }
+
+    private void UpdateMoneyDisplay()
+    {
+        if (panelgraine.activeSelf)
+        {
+            shopMoneyText.text = "Argent : " + player.Money + " pièces";
+        }
+
+        if (panelachat.activeSelf)
+        {
+            shopMoneyText.text = "Argent : " + player.Money + " pièces";
+        }
+
+        if (Arrosoire.activeSelf)
+        {
+            shopMoneyText.text = "Argent : " + player.Money + " pièces";
+        }
+        shopMoneyText.text = "Argent : " + player.Money + " pièces";
     }
 }
