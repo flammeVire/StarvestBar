@@ -4,5 +4,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Vegetable : Vegetable_Scriptable
 {
-    
+     
 }

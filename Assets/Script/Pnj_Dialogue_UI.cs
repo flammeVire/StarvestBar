@@ -43,7 +43,7 @@ public class Pnj_Dialogue_UI : MonoBehaviour
     {
         // Initialisation du panel en mode caché
         dialogue.text = " Voici votre smoothie";
-        yield return new WaitForSecondsRealtime(1f);
+        yield return null;
         hide();
         
     }

@@ -28,22 +28,69 @@ public class Plantation_Controller : MonoBehaviour
 
     public void Watering(Vector2Int seedpos)
     {
-        Vector3Int seedpos3 = new Vector3Int(seedpos.x, seedpos.y, 0);
-        Vector3Int cellPos = tilemap.WorldToCell(seedpos3);
-
-        foreach (var seedDico in SeedPosition)
+        if (!gameManager.player.isUpgraded)
         {
-            if (seedDico.Key == seedpos)
+            Vector3Int seedpos3 = new Vector3Int(seedpos.x, seedpos.y, 0);
+            Vector3Int cellPos = tilemap.WorldToCell(seedpos3);
+
+            foreach (var seedDico in SeedPosition)
             {
-                tilemap.SetTile(cellPos, seedDico.Value.WateredTiles);
-                break;
+                if (seedDico.Key == seedpos)
+                {
+                    tilemap.SetTile(cellPos, seedDico.Value.WateredTiles);
+                    break;
+                }
             }
         }
+        else
+        {
+            Vector3Int[] seedpos3 = new Vector3Int[9] { new Vector3Int(seedpos.x - 1, seedpos.y + 1, 0), new Vector3Int(seedpos.x, seedpos.y + 1, 0), new Vector3Int(seedpos.x + 1, seedpos.y + 1, 0),
+                                                        new Vector3Int(seedpos.x-1, seedpos.y, 0),new Vector3Int(seedpos.x, seedpos.y, 0),new Vector3Int(seedpos.x+1, seedpos.y, 0),
+                                                        new Vector3Int(seedpos.x-1, seedpos.y-1, 0),new Vector3Int(seedpos.x, seedpos.y-1, 0),new Vector3Int(seedpos.x+1, seedpos.y-1, 0)};
 
+            //revoir car seedpos3 != seedpos
+            /*
+               int already = 0;
+            foreach(var seedDico in SeedPosition)
+            {
+               for(int i = 0; i < seedpos3.Length;i++)
+                {
+                        Debug.LogWarning("already = " + already + "&& " + "i = " + i);
+                    Debug.Log((Vector2Int)seedpos3[i] == seedpos);
+                    Debug.Log(i == already);
+                    Debug.Log((Vector2Int)seedpos3[i]);
+                    Debug.Log(seedpos);
 
+                    if ((Vector2Int)seedpos3[i] == seedpos && i == already)
+                    {
+                        Debug.Log("position tiles == " + seedpos3[i]);
+                        already++;
+                        tilemap.SetTile(tilemap.WorldToCell(seedpos3[i]), seedDico.Value.WateredTiles);
+                        break;
+                    }
+                }
+                
+            }
+            */
+            for (int i = 0; i < seedpos3.Length; i++)
+            {
+                Vector3Int cellPos = tilemap.WorldToCell(seedpos3[i]);
 
-
+                foreach (var seedDico in SeedPosition)
+                {
+                    if (seedDico.Key == (Vector2Int)seedpos3[i])
+                    {
+                        tilemap.SetTile(cellPos, seedDico.Value.WateredTiles);
+                        break;
+                    }
+                }
+            }
+        }
+        
+        
     }
+    
+    
 
     public void Beching(Vector2Int seedpos)
     {
