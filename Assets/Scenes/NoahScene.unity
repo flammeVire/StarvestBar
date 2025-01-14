@@ -5691,7 +5691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1180153868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8827,7 +8827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7073433089945226474, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7085435299714000957, guid: a3c008c1ee71f6240ba77a22b458bace, type: 3}
       propertyPath: m_SizeDelta.x
@@ -12020,6 +12020,11 @@ MonoBehaviour:
   bloquer: 0
   playerController: {fileID: 275980475}
   gameManager: {fileID: 856173923}
+  persoMain: {fileID: 0}
+  persoArrosoir1: {fileID: 0}
+  persoArrosoir2: {fileID: 0}
+  persoGraine: {fileID: 0}
+  persoFaux: {fileID: 0}
 --- !u!1001 &729221648694019517
 PrefabInstance:
   m_ObjectHideFlags: 0
