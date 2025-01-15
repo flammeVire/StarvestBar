@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: Raisin
   price: 120
-  sprite: {fileID: 0}
-  tile: {fileID: 11400000, guid: 2e1ed21b692efbc4886b3a86fe682a9c, type: 2}
+  sprite: {fileID: 21300000, guid: fb47bb6c5207b09459e0aec9ec7ef43b, type: 3}
+  tile: {fileID: 11400000, guid: 1620bfcc787e72a47bd4173a17f7cf2e, type: 2}
