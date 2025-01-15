@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: Graine de Carotte
   price: 5
-  sprite: {fileID: 21300000, guid: 890bfefde97f2f74896dd93e6ff49e48, type: 3}
-  tile: {fileID: 11400000, guid: 1e82fadfc55a19b43991a67a07640f7f, type: 2}
+  sprite: {fileID: 21300000, guid: 91113f734fecc21468211f746b91d73e, type: 3}
+  tile: {fileID: 11400000, guid: 8191c49b54e020c41ab8907c2fb40018, type: 2}
   growthTime: 2
-  mutationInPercent: 100
+  mutationInPercent: 95
   ActualGrowthTime: 0
   Vegetable: {fileID: 11400000, guid: 0d68867f87cde5b46a89c9296a1ed680, type: 2}
-  WateredTiles: {fileID: 11400000, guid: 410a3bbce5ece2c47b55d096aab8a6fc, type: 2}
+  WateredTiles: {fileID: 11400000, guid: 9df6df439110a714c8d3bf5511675c33, type: 2}
+  HaveMuted: 0

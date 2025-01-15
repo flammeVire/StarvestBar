@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nom: Chou
   price: 40
-  sprite: {fileID: 0}
-  tile: {fileID: 11400000, guid: 6b02b03efca9f524a9fe23204c3e6f4f, type: 2}
+  sprite: {fileID: 21300000, guid: 8772262ea8d1cbd4782d602a8bdf479e, type: 3}
+  tile: {fileID: 11400000, guid: 87aaa17264eca494494c52c5bfa742d8, type: 2}

@@ -15,4 +15,4 @@ MonoBehaviour:
   nom: Chourotte
   price: 170
   sprite: {fileID: 0}
-  tile: {fileID: 11400000, guid: d9b21ee6e394f4a479ee3c67bf49092c, type: 2}
+  tile: {fileID: 11400000, guid: 2dc9a8f4524ae4b478bb3069c5385e9b, type: 2}
