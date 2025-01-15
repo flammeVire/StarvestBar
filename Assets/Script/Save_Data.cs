@@ -102,6 +102,7 @@ public class Save_Data : MonoBehaviour
         }
         player.PlayerPosition = Data.PlayerPosition;
         player.arrosoirCapacity = Data.arroisoir_Capacity;
+        player.isUpgraded = Data.arroisoirIsUpgraded;
 
         plantation.SeedPosition = ReturnDictSeedFromJson(Data);
         plantation.VegetablePosition = ReturnDictVegetableFromJson(Data) ;

@@ -28,7 +28,7 @@ public class Pnj_Dialogue_UI : MonoBehaviour
 
         // Met à jour le texte du dialogue
         Debug.Log(player.MakeSmoothie());
-        dialogue.text = "Bonjour ! J'aimerais avoir le smoothie: \n" + player.LegumeChoisi.Nom;
+        dialogue.text = "Bonjour !\n J'aimerais avoir le smoothie: \n" + player.LegumeChoisi.Nom;
         
     }
 

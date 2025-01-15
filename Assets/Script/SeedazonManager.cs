@@ -187,11 +187,11 @@ public class SeedazonManager : MonoBehaviour
             player.SeedInventory.Add(graineAcheter);
             player.uiManagement.UpdateMoneyDisplay(player.Money);
 
-            shopMoneyText.text = "Argent : " + player.Money + " pièces";
+            shopMoneyText.text = "Argent : " + player.Money + " euros";
 
             if (Arrosoire.activeSelf)
             {
-                arrosoireMoneyText.text = "Argent : " + player.Money + " pièces";
+                arrosoireMoneyText.text = "Argent : " + player.Money + " euros";
             }
 
             if (graineAcheter == GameManager.Instance.PossibleSeed[0])
@@ -240,7 +240,7 @@ public class SeedazonManager : MonoBehaviour
 
                 if (Arrosoire.activeSelf)
                 {
-                    arrosoireMoneyText.text = "Argent : " + player.Money + " pièces";
+                    arrosoireMoneyText.text = "Argent : " + player.Money + " euros";
                 }
 
                 ameliorationAchatCount++;
@@ -262,7 +262,7 @@ public class SeedazonManager : MonoBehaviour
 
     private void UpdateMoneyDisplay(TMP_Text text)
     {
-        text.text = "Argent: " + player.Money + " pièces";
+        text.text = "Argent: " + player.Money + " euros";
     }
 
     private void UpdateGrainesAcheteesText(int graineType)
@@ -270,16 +270,16 @@ public class SeedazonManager : MonoBehaviour
         switch (graineType)
         {
             case 1:
-                grainesAcheteesText1.text = "Carotte achetée : " + UIManager.numberOfSeeds1.ToString();
+                grainesAcheteesText1.text = "\n" + UIManager.numberOfSeeds1.ToString();
                 break;
             case 2:
-                grainesAcheteesText2.text = "Chou achetée : " + UIManager.numberOfSeeds2.ToString();
+                grainesAcheteesText2.text = "\n " + UIManager.numberOfSeeds2.ToString();
                 break;
             case 3:
-                grainesAcheteesText3.text = "Citrouille achetée : " + UIManager.numberOfSeeds3.ToString();
+                grainesAcheteesText3.text = "\n " + UIManager.numberOfSeeds3.ToString();
                 break;
             case 4:
-                grainesAcheteesText4.text = "Raisin achetée : " + UIManager.numberOfSeeds4.ToString();
+                grainesAcheteesText4.text = "\n " + UIManager.numberOfSeeds4.ToString();
                 break;
         }
     }
