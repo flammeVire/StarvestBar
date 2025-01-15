@@ -19,22 +19,21 @@ public class Save_Data : MonoBehaviour
         System.IO.File.WriteAllText(filePath, game_Data);
     }
     public void Save()
-    {        
+    {   
+        Data.Player_Vegetables_name = new List<string>(player.vegetablesInventory.Count);
         Data.money = player.Money;
         Data.Player_seeds = player.SeedInventory;
-        Data.Player_Vegetables = player.vegetablesInventory;
+        foreach (var i in player.vegetablesInventory)
+            Data.Player_Vegetables_name.Add(i.Nom);
         Data.PlayerPosition = player.PlayerPosition;
         Data.arroisoir_Capacity = player.arrosoirCapacity;
-        Data.arroisoirIsUpgraded = false; // changer avec code de mael
+        Data.arroisoirIsUpgraded = player.isUpgraded; // changer avec code de mael
         
 
         foreach (var plantes in plantation.SeedPosition)
         {
-            Debug.Log(plantes);
             Seed_Data seed_Data = AddingSeedCloneData(plantes.Value, plantes.Key);
-            Debug.Log(seed_Data);
             Data.Seeds_OnMap.Add(seed_Data);
-            Debug.Log(Data.Seeds_OnMap.Count);           
         }
         foreach(var plantes in plantation.VegetablePosition)
         {
@@ -90,7 +89,17 @@ public class Save_Data : MonoBehaviour
 
         player.Money = Data.money;
         player.SeedInventory = Data.Player_seeds;
-        player.vegetablesInventory = Data.Player_Vegetables;
+        foreach (var i in Data.Player_Vegetables_name)
+        {
+            foreach( var legume in gameManager.PossibleVegetable)
+            {
+                if(i == legume.Nom)
+                {
+                    player.vegetablesInventory.Add(Instantiate(legume));
+                    break;
+                }
+            }
+        }
         player.PlayerPosition = Data.PlayerPosition;
         player.arrosoirCapacity = Data.arroisoir_Capacity;
 
@@ -98,7 +107,7 @@ public class Save_Data : MonoBehaviour
         plantation.VegetablePosition = ReturnDictVegetableFromJson(Data) ;
 
         gameManager.CurrentDayCycle = Data.DayCycle;
-
+        player.uiManagement.UpdateMoneyDisplay(player.Money);
         changeTileMap();
     }
 
@@ -164,20 +173,23 @@ public class Save_Data : MonoBehaviour
     Dictionary<Vector2Int,Vegetable> ReturnDictVegetableFromJson(Game_Data data)
     {
         Dictionary<Vector2Int, Vegetable> dico = new Dictionary<Vector2Int, Vegetable>();
-        foreach(var valeur in data.Vegetable_OnMap)
-        {
-            Vegetable clone = null;
-            foreach(Vegetable vegetable in gameManager.PossibleVegetable)
-            {
-                if(vegetable.Nom == valeur.Nom)
-                {
-                    clone= Instantiate(vegetable);
-                }   
-            }
-            
-            dico.Add(valeur.position,clone);
-        }
 
+        //crée un clone de la graine
+        //quel est la graine
+
+        foreach (var valeur in data.Vegetable_OnMap)
+        {
+            Debug.Log(valeur);
+            Vegetable clone = null;
+            foreach (Vegetable plante in gameManager.PossibleVegetable)
+            {
+                if (plante.Nom == valeur.Nom)
+                {
+                    clone = Instantiate(plante);
+                    dico.Add(valeur.position, clone);
+                }
+            }
+        }
         return dico;
     }
     #endregion
@@ -189,7 +201,7 @@ public class Game_Data
 {
     public int money;
     public List<Seed> Player_seeds;
-    public List<Vegetable> Player_Vegetables;
+    public List<string> Player_Vegetables_name;
     public Vector2Int PlayerPosition;
     public int arroisoir_Capacity;
     public bool arroisoirIsUpgraded;
